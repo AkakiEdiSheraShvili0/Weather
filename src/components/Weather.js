@@ -1,46 +1,30 @@
 
     import './Weather.css';
     import {useState} from "react";
-import { logDOM } from '@testing-library/react';
+    import { logDOM } from '@testing-library/react';
 
 
     
 
-const Weather = () => {
-    const [data, setData] = useState({});
-    const [location, setLocation] = useState('');
-
-
-    const url = "https://api.openweathermap.org/data/2.5/weather?q=$(location)&appid={d1d170c6d6233b69ea4fff9aa239ef8e}";
+    const Weather = () => {
+        const [data, setData] = useState({});
+        const [location, setLocation] = useState('');
+        //const url = "https://api.openweathermap.org/data/2.5/weather?q=$(location)&appid={d1d170c6d6233b69ea4fff9aa239ef8e}";
     
     
-
-
 
     const searchLocations = (e) => {
-            
         if (e.key === 'Enter'){
             fetch (`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=895284fb2d2c50a520ea537456963d9c`)
                         .then ((response) => response.json())
                         .then ((data) => setData(data))
                         console.log(data)
-                        console.log("shesrulda")
+                        console.log("wow")
                         setLocation('')
         }
 
-        console.log("veraaaa");
-        
-
-
-                 
+        console.log("no wow");        
     }
-
-    // const temp = (data.main.temp -32) /18;
-
-    
-    
-
-
 
     return  (
         <div className='weather'>
@@ -60,7 +44,7 @@ const Weather = () => {
                         <p className={'bold'}>{data.name}</p>
                     </div>
                     <div className="temp">
-                        {data.name ? <h1>{((data.main.temp -32) /18).toFixed(2)} C</h1> : null}
+                        {data.name ? <h1>{((data.main.temp -32) /18).toFixed()} C</h1> : null}
                     </div>
                     <div className="description">
                         {data.clouds ? <p className={'bold'}>{data.clouds.all} % {data.weather[0].main}</p> :null}
@@ -69,7 +53,7 @@ const Weather = () => {
                 </div>
                 <div className="bottom">
                     <div className="feels">
-                        {data.main ? <p className={'bold'}>{((data.main.feels_like -32) /18).toFixed(2)} C</p> : <p className={'bold'}>0</p>}
+                        {data.main ? <p className={'bold'}>{((data.main.feels_like -32) /18).toFixed()} C</p> : <p className={'bold'}>0</p>}
                         <p>Feels Like</p>
                     </div>
                     <div className="humidity">
